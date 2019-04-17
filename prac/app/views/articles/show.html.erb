@@ -1,4 +1,4 @@
-<div class = "container">
+
 	<h1><strong> Title :  </strong></h1>
 	<p><%= @article.title %></p>
 
@@ -19,6 +19,5 @@
 		<%= f.submit %>
 	</p>
 	<%end%>
-</div>
 <%= link_to 'Edit' , edit_article_path(@article) %>
 <%= link_to 'All' , articles_path %>

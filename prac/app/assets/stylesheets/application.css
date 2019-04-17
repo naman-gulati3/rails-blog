@@ -13,9 +13,10 @@
  *= require_tree .
  *= require_self
  */
-@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
-div {
-	margin-left : 20;
+body {
+	margin-top:20px;
+	background-color: lightgray;
+	
 }
 p {
 	font-family: arial;

@@ -8,20 +8,16 @@
 <% @article.errors.full_messages.each do |err| %>
 <li> <%=err %> </li>
 <%end%>
-<ul>
-</h2>
+</ul>
+</div>
 <%end%>
-  <p>
-    <%= form.label :title%><br>
-    <%= form.text_field :title %>
-  </p>
+
+    <%= form.label :title, class: ''%><br>
+    <%= form.text_field :title ,class: 'inputexpand'%><br>
  
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
+    <%= form.label :text  %><br>
+    <%= form.text_area :text,class: 'inputexpand' %>
  
-  <p>
-    <%= form.submit %>
-  </p>
+    <%= form.submit "Create Article" , class: 'btn btn-primary'%>
+  
   <%end%>

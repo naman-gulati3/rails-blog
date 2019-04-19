@@ -14,10 +14,9 @@
  *= require_self
  */
 body {
-	margin-top:20px;
 	background-color: lightgray;
-	
+
 }
 p {
 	font-family: arial;
-}
+}	

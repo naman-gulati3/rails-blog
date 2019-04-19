@@ -1,23 +1,19 @@
- 	<p> <strong> Comments : </strong> 
- 		
- 		<% if @article.errors.any?%>
- 		<%=pluralize(@article.comments.errors.count,"error") %> Prohibed this comment from being posted
-		<% @article.comments.each do |c| %>
-		<%end%>
-	
-			<p>
-			<strong> Commenter: </strong>
-			<%= c.commenter %>
-		</p>
-		<p>
-		<strong> Comment: </strong>
-		<%= c.body %>
-	</p>
-		
-		<%= link_to 'Destroy comment' , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%>
-	
-	
-	
-	<%end%>
-	</p>
-	
+  <p> <strong> Comments : </strong> 
+    
+    <% if @article.errors.any?%>
+    <%=pluralize(@article.comments.errors.count,"error") %> Prohibed this comment from being posted
+    <% @article.comments.each do |c| %>
+    <%end%>
+  
+      <p>
+      <strong> Commenter: </strong>
+      <%= c.commenter %>
+    </p>
+    <p>
+    <strong> Comment: </strong>
+    <%= c.body %>
+  </p>
+    
+    <%= link_to 'Destroy comment' , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%>
+  <%end%>
+  </p>

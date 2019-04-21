@@ -20,3 +20,7 @@ body {
 p {
 	font-family: arial;
 }	
+#user_nav {
+	float:right;
+	font-size: 12px;
+}

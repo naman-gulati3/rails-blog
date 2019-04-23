@@ -1,18 +1,13 @@
-  <p> <strong> Comments : </strong> 
-    
-    
+  <u><p> <strong> Comments : </strong> </p></u>
     <% @article.comments.each do |c| %>
-   
-  
-      <p>
-      <strong> Commenter: </strong>
-      <%= c.commenter %>
+   <p>  
+      <strong><%= c.user.username %></strong>
     </p>
     <p>
-    <strong> Comment: </strong>
     <%= c.body %>
   </p>
-    
+  <%if c.user_id == current_user.id %>
     <%= link_to 'Destroy comment' , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%>
-  <%end%>
+    <%end%>
+    <%end%>
   </p>

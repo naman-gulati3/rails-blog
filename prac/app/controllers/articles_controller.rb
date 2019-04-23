@@ -21,6 +21,11 @@ before_action :authenticate_user! , except: [:show, :index]
     end
 end 
   def edit
+    @article = Article.find(params[:id])
+    if @article.user_id != current_user.id
+      render 'error'
+
+    else
       @article = current_user.articles.find(params[:id]) 
       flash[:notice] ="Edited successfully" 
     end
@@ -39,8 +44,12 @@ end
 
   def destroy
     @article= Article.find(params[:id]) 
+    if @article.user_id == current_user.id
     @article.destroy
     redirect_to articles_path
+  else
+    render 'error'
+  end
   end
   private
   def article_params

@@ -24,3 +24,7 @@ p {
 	float:right;
 	font-size: 20px;
 }
+#home_button {
+	margin-left: 50px;
+	color:white;
+}

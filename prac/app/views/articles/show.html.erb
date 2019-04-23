@@ -1,8 +1,10 @@
+		<div style="positon:relative" class="well">
 		<u><h1><%= @article.title %></h1></u>
-	<h1><strong> Text: </strong></h1>
 	<p> <%=@article.text %></p>
 	<%=render 'comments' %>
-	<div class="well">
+</div>
+<%if user_signed_in? %>
+	<div style="position:relative" class="well">
 	<h2> Add comments </h2>
 	<%= form_for([@article, @article.comments.build]) do |f| %>
 	<p>
@@ -17,6 +19,9 @@
 		<%= f.submit %>
 	</p>
 </div>
+<%end%>
 	<%end%>
+	<% if user_signed_in? && @article.user_id == current_user.id %>
 <%= link_to 'Edit' , edit_article_path(@article) %>
+<%end%>
 <%= link_to 'All' , articles_path %>

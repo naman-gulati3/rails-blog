@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190420120928) do
+ActiveRecord::Schema.define(version: 20190422125104) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -51,15 +51,33 @@ ActiveRecord::Schema.define(version: 20190420120928) do
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id"
 
+  create_table "assignments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "assignments", ["role_id"], name: "index_assignments_on_role_id"
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"
+
   create_table "comments", force: :cascade do |t|
     t.string   "commenter"
     t.text     "body"
     t.integer  "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -74,5 +92,12 @@ ActiveRecord::Schema.define(version: 20190420120928) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
 
 end

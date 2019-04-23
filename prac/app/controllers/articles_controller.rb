@@ -1,9 +1,10 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+before_action :authenticate_user! , except: [:show, :index]
   def index 
     @article = Article.all
   end
   def show
+
     @article = Article.find(params[:id])
 
   end
@@ -20,18 +21,24 @@ class ArticlesController < ApplicationController
     end
 end 
   def edit
-    @article = Article.find(params[:id])
+      @article = current_user.articles.find(params[:id]) 
+      flash[:notice] ="Edited successfully" 
+    end
   end
+
   def update
-    @article = Article.find(params[:id])
+
+    @article = current_user.articles.find(params[:id])
     if @article.update(article_params)
+      flash[:notice] = "Article successfully updated"
       redirect_to @article
     else
       render 'edit'
     end
   end
+
   def destroy
-    @article = Article.find(params[:id])
+    @article= Article.find(params[:id]) 
     @article.destroy
     redirect_to articles_path
   end

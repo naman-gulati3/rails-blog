@@ -1,13 +1,14 @@
-  <u><p> <strong> Comments : </strong> </p></u>
+  <h4> Comments : </h4>
+
     <% @article.comments.each do |c| %>
-   <p>  
-      <strong><%= c.user.username %></strong>
-    </p>
-    <p>
-    <%= c.body %>
-  </p>
+    <%if @article.user_id == current_user.id %>
+    <strong class="commenter">Author : </strong>
+    <%else%>
+      <strong class="commenter"><%= c.user.username %></strong>
+      <%end%>
+    <div id="each_comment"><%= c.body %></div>
   <%if c.user_id == current_user.id %>
-    <%= link_to 'Destroy comment' , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%>
+    <p id="comment_delete"><%= link_to '<strong>Delete</strong>'.html_safe , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%></p>
     <%end%>
     <%end%>
-  </p>
+ 

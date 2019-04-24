@@ -1,27 +1,38 @@
-		<div style="positon:relative" class="well">
-		<u><h1><%= @article.title %></h1></u>
-	<p> <%=@article.text %></p>
-	<%=render 'comments' %>
-</div>
+  <div id="everything">
+    <h1 id="article_heading"><%= @article.title %></h1>
+    <div id="author">By <%=@article.user.username%> on <%= @article.created_at.strftime("%d-%m-%Y") %></div>
+  <p id="content"> <%=@article.text %></p>
+<%=render 'comments' %>
 <%if user_signed_in? %>
-	<div style="position:relative" class="well">
-	<h2> Add comments </h2>
-	<%= form_for([@article, @article.comments.build]) do |f| %>
-	<p>
-	<%= f.label 'Commenting as '%>
-	<strong><%= current_user.username %></strong>
-	</p>
-	<p>
-		<%=f.label :body %><br>
-		<%= f.text_area :body%>
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
+  <div id="comment_plus_button">
+    <div id="comment_box" class="well"> 
+  <h2> Add comments </h2>
+  <%= form_for([@article, @article.comments.build]) do |f| %>
+  <p>
+  <%= f.label 'Commenting as '%>
+  <strong><%= current_user.username %></strong>
+  </p>
+  <p>
+    <%=f.label :body %><br>
+    <%= f.text_area :body, class:'form-control'%>
+  </p>
+  <p>
+    <%= f.submit "Create Comment", class:'btn btn-primary'%>
+  </p>
+  </div>
+  <div id="show_and_edit"> 
+    <% if user_signed_in? && @article.user_id == current_user.id %>
+<%= link_to '<button class="btn btn-primary">Edit</button>'.html_safe , edit_article_path(@article) %>
+<%end%>
+<%= link_to '<button class="btn btn-primary">All</button>'.html_safe , articles_path %></p>
+<%- unless current_user.favorite_articles.exists?(id: @article.id) -%>
+<%= link_to '<button class="btn btn-success">Add to favorites</button>'.html_safe, favorite_articles_path(article_id: @article), method: :post %>
+<%- else -%>
+<%= link_to '<button class="btn btn-danger">Remove from favorites</button>'.html_safe, favorite_article_path(@article), method: :delete %>
+<%- end -%>
+<%end%>
+  <%end%>
+
+  </div>
 </div>
-<%end%>
-	<%end%>
-	<% if user_signed_in? && @article.user_id == current_user.id %>
-<%= link_to 'Edit' , edit_article_path(@article) %>
-<%end%>
-<%= link_to 'All' , articles_path %>
+</div>

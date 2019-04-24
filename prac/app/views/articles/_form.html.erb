@@ -13,11 +13,11 @@
 <%end%>
 
     <%= form.label :title%><br>
-    <%= form.text_field :title%><br>
+    <%= form.text_field :title, class:"form-control"%><br>
  
     <%= form.label :text  %><br>
-    <%= form.text_area :text %>
+    <%= form.text_area :text,id:"edit_input",class:"form-control",id: 'edit_textbox' %>
  
-    <%= form.submit "Create Article" , class: 'btn btn-primary'%>
+    <%= form.submit "Create Article" , class: 'btn btn-primary', id:'submit_button'%>
   
   <%end%>

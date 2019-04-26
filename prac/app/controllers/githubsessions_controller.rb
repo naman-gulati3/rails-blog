@@ -1,7 +1,5 @@
 class GithubsessionsController < ApplicationController
-  wrap_parameters :user, include: [:name, :password, :password_confirmation]
   def new
-
   end
 
   def create
@@ -9,14 +7,15 @@ class GithubsessionsController < ApplicationController
 
     if user.valid?
       session[:user_id] = user.id
-      redirect_to root_url
+      redirect_to request.env['omniauth.origin']
     end
   end
 
   def destroy
-    session[:user_id] = nil
+    reset_session
     redirect_to root_url
   end
+  private
 
 
 end

@@ -2,15 +2,15 @@
 
     <% @article.comments.each do |c| %>
     <%if user_signed_in? && c.user_id == @article.user_id %>
-    <strong class="commenter">Author : </strong>
+      <strong class="commenter">Author : </strong>
     <%elsif user_signed_in? && c.user_id != @article.user_id%>
       <strong class="commenter"><%= c.user.username %></strong>
-      <%elsif !user_signed_in? %>
+    <%elsif !user_signed_in? %>
       <strong class="commenter"><%= c.user.username%></strong>
-      <%end%>
+    <%end%>
     <div id="each_comment"><%= c.body %></div>
-  <%if user_signed_in? && c.user_id == current_user.id || user_signed_in? && @article.user_id == current_user.id %>
-    <p id="comment_delete"><%= link_to '<strong>Delete</strong>'.html_safe , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%></p>
+    <%if user_signed_in? && c.user_id == current_user.id || user_signed_in? && @article.user_id == current_user.id %>
+      <p id="comment_delete"><%= link_to '<strong>Delete</strong>'.html_safe , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%></p>
     <%end%>
     <%end%>
  

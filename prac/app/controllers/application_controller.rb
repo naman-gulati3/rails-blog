@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  prepend_before_action :require_no_authentication, only: :cancel
  
   protect_from_forgery with: :exception
 
@@ -11,5 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user 
-
+  def current_user
+    session[:user_id].nil? ? nil : User.find(session[:user_id])
+  end
 end

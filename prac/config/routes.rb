@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   get 'sessions/create'
 
   get 'sessions/destroy'
@@ -19,7 +18,6 @@ resources :favorite_articles, only: [:create, :destroy]
   get 'auth/failure', to: redirect('/')
   delete 'signout', to: 'githubsessions#destroy', as: 'signout'
   root to: 'articles#index'
-  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -16,22 +16,25 @@ font-size:25px;
 
 </head>
 <body>
-  <nav style="background-color:black", class="navbar navbar-default bg-dark">
-  <div class="container-fluid">
-    <div id="links" class="navbar-header">
-      <a class="navbar-brand" href="#">Loconav</a>
-    </div>
-    <ul id="links" class="nav navbar-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><%= link_to 'Blogs', articles_path %></li>
-    </ul>
-    
-  </div>
-  <ul id="profile" class="nav navbar-nav navbar-right">
+<nav id="top_navbar" class="navbar navbar-inverse" role="navigation">
+   <div class="navbar-header">
+      <%=link_to '<h4 style="color:white;font-size:3rem" class="navbar-brand">Loconav</h4>'.html_safe  %>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li class="active"><%= link_to '<h4 class="navbar_links">About Us</h4>'.html_safe%></li>
+         <li><%= link_to '<h4 class="navbar_links">Blog</h4>'.html_safe ,articles_path , class:"subnav-trigger" %></li>
+      </ul>
+   </div>
+
+</nav>
+
+<nav id="subnav" class="navbar navbar-default" role="navigation">
+      <ul class="nav navbar-nav">
+      </ul>
+        <ul id="profile" class="nav navbar-nav navbar-right">
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+    <a style="color:black;margin-right:40px;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
     <ul class="dropdown-menu">
       <% if user_signed_in? %>
         <li><%= link_to "Edit profile", edit_user_registration_path %></li>
@@ -44,7 +47,6 @@ font-size:25px;
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
       <% end %>
   </ul>
-
 </nav>
   
     <div class="container">

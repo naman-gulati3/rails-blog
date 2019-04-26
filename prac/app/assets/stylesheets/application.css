@@ -98,3 +98,19 @@ font-weight:bold;
 font-size:2rem;
 color:white;
 }
+#new_article{
+  margin-bottom: 30px;
+  font-size:2rem;
+  font-weight: bold;
+}
+#top_navbar{
+ background-color:black;
+  height: 50px;
+}
+#subnav{
+  margin-top:-20px;
+background-color:#788290;
+}
+.navbar_links{
+  color:white;
+}

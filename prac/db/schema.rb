@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190424103747) do
+ActiveRecord::Schema.define(version: 20190425092041) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -84,16 +84,6 @@ ActiveRecord::Schema.define(version: 20190424103747) do
   add_index "favorites", ["favorited_type", "favorited_id"], name: "index_favorites_on_favorited_type_and_favorited_id"
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
 
-  create_table "googleusers", force: :cascade do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "oauth_token"
-    t.datetime "oauth_expires_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -101,16 +91,18 @@ ActiveRecord::Schema.define(version: 20190424103747) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                              default: "", null: false
-    t.string   "encrypted_password",                 default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "username"
-    t.string   "provider",               limit: 50,  default: "", null: false
-    t.string   "uid",                    limit: 500, default: "", null: false
+    t.string   "avatar_url"
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "oauth_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

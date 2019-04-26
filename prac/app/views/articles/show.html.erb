@@ -26,9 +26,9 @@
 <%end%>
 <%= link_to '<button class="btn btn-primary">All</button>'.html_safe , articles_path %></p>
 <%- unless current_user.favorite_articles.exists?(id: @article.id) -%>
-<%= link_to '<button class="btn btn-success">Add to favorites</button>'.html_safe, favorite_articles_path(article_id: @article), method: :post %>
+<%= link_to '<button class="btn btn-success">Add to Favorite</button>'.html_safe, favorite_articles_path(article_id: @article), method: :post %>
 <%- else -%>
-<%= link_to '<button class="btn btn-danger">Remove from favorites</button>'.html_safe, favorite_article_path(@article), method: :delete %>
+<%= link_to '<button class="btn btn-danger">Remove from favorite</button>'.html_safe, favorite_article_path(@article), method: :delete %>
 <%- end -%>
 <%end%>
   <%end%>

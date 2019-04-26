@@ -16,7 +16,7 @@ font-size:25px;
 
 </head>
 <body>
-	<nav style="background-color:black", class="navbar navbar-default bg-dark">
+  <nav style="background-color:black", class="navbar navbar-default bg-dark">
   <div class="container-fluid">
     <div id="links" class="navbar-header">
       <a class="navbar-brand" href="#">Loconav</a>
@@ -27,6 +27,7 @@ font-size:25px;
       <li><a href="#">Contact</a></li>
       <li><%= link_to 'Blogs', articles_path %></li>
     </ul>
+    
   </div>
   <ul id="profile" class="nav navbar-nav navbar-right">
   <li class="dropdown">
@@ -45,7 +46,7 @@ font-size:25px;
   </ul>
 
 </nav>
-
+  
     <div class="container">
     <%= yield %>
     </div>

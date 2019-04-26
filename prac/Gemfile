@@ -29,8 +29,9 @@ gem 'devise', '~> 4.6.2'
 gem 'cancan'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
-
-# Use Capistrano for deployment
+gem 'omniauth'
+gem 'omniauth-facebook'
+#Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do

@@ -1,4 +1,4 @@
-/*
+  /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -89,6 +89,12 @@ font-size:2rem;
 margin-bottom: 20px;
 }
 #index_value{
-  font-size:1.4rem;
+  font-size:1.6rem;
+  margin-top:20px;
   left:20px;
 } 
+#profile{
+font-weight:bold;
+font-size:2rem;
+color:white;
+}

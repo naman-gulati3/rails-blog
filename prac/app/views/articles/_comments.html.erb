@@ -1,13 +1,15 @@
   <h4> Comments : </h4>
 
     <% @article.comments.each do |c| %>
-    <%if @article.user_id == current_user.id %>
+    <%if user_signed_in? && c.user_id == @article.user_id %>
     <strong class="commenter">Author : </strong>
-    <%else%>
+    <%elsif user_signed_in? && c.user_id != @article.user_id%>
       <strong class="commenter"><%= c.user.username %></strong>
+      <%elsif !user_signed_in? %>
+      <strong class="commenter"><%= c.user.username%></strong>
       <%end%>
     <div id="each_comment"><%= c.body %></div>
-  <%if c.user_id == current_user.id %>
+  <%if user_signed_in? && c.user_id == current_user.id || user_signed_in? && @article.user_id == current_user.id %>
     <p id="comment_delete"><%= link_to '<strong>Delete</strong>'.html_safe , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%></p>
     <%end%>
     <%end%>

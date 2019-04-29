@@ -13,8 +13,7 @@ class FavoriteArticlesController < ApplicationController
     @favorite = Favorite.where(favorited_id: @article.id, user_id: current_user.id).first
     @favorite.destroy
     redirect_to @article, notice: 'Article is no longer in favorites'
-  end
-  
+    end
   private
   
   def set_article

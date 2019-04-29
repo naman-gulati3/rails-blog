@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password])
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :current_password])
   end
-
-  helper_method :current_user 
-  def current_user
-    session[:user_id].nil? ? nil : User.find(session[:user_id])
+    def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 end

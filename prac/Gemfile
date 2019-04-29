@@ -34,6 +34,8 @@ gem "ckeditor", :git => "https://github.com/galetahub/ckeditor.git"
 gem 'slim-rails'
 gem 'omniauth-facebook'
 gem 'tinymce-rails'
+gem 'truncate_html'
+gem 'paperclip'
 #Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

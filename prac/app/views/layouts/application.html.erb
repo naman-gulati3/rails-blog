@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style>
-		#links a{
-color:white;
-font-size:25px;
-		}
-	</style>
+
   <title>Loconav Blogs</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -40,19 +35,25 @@ font-size:25px;
         <li><%= link_to "Edit profile", edit_user_registration_path %></li>
       <% else %>
         <li><%= link_to "Sign up", new_user_registration_path %></li>
-        <li><%= link_to "Login", new_user_session_path %></li>
+        <li><%=link_to 'Login' , new_user_session_path%></li>
+        <li><%= link_to "Login with Github", '/auth/github' %></li>
       <% end %>
       <% if user_signed_in? %>
         <li role="separator" class="divider"></li>
+        <% if current_user.provider.present? %>
+        <li><%= link_to "Logout", signout_path, method: :delete %></li>
+        <%else%>
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <%end%>
       <% end %>
   </ul>
 </nav>
-  
+
     <div class="container">
     <%= yield %>
     </div>
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
 </body>
+
 </html>

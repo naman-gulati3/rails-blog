@@ -3,11 +3,10 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
- devise_for :users
- resources :users
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  get 'articles/index'
+  get 'articles/index'  
   # You can have the root of your site routed with "root"
    resources :articles do 
     resources :comments

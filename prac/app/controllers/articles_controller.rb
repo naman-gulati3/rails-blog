@@ -31,6 +31,10 @@ end
     end
   end
 
+  def userarticles
+    @article = Article.all
+  end
+
   def update
 
     @article = current_user.articles.find(params[:id])

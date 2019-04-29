@@ -1,4 +1,4 @@
-/*
+  /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -13,10 +13,116 @@
  *= require_tree .
  *= require_self
  */
-@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
-div {
-	margin-left : 20;
+body{
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
-p {
-	font-family: arial;
+#user_nav {
+  float:right;
+  font-size: 20px;
 }
+#home_button {
+  margin-left: 50px;
+  color:white;
+}
+#back_button{
+  position: relative;
+  top:-10px;
+  left:150px;
+}
+#content{
+    color: #3f474e;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 32px;
+    line-height: 1.618;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+
+}
+#article_heading{
+  font-size: 3.6rem;
+  line-height: 1.2;
+  font-weight: 900;
+  display: block;
+  color: #2F3236;
+  word-wrap: break-word;
+  -webkit-tap-highlight-color: transparent;
+  margin: 45px 0 25px 0;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+#show_and_edit{
+  position:relative;
+  left:10px;
+  top:100px;
+}
+
+#everything{
+    padding: 0 30px;
+        margin-right: auto;
+    margin-left: auto;
+    width:100%;
+    display: block;
+}
+h4{
+  font-weight: bold;
+}
+.commenter{
+  font-size:1.6rem;
+}
+#each_comment{
+margin-bottom: 10px;
+width:85%;
+}
+#comment_delete{
+  position: relative;
+  left:1000px;
+  top:-55px;
+}
+#author{
+  font-size:1.6rem;
+  margin-bottom:40px;
+}
+.index_heading{
+font-size:2.5rem; 
+margin-bottom: 20px;
+}
+#index_value{
+  font-size:1.7rem;
+  margin-top:20px;
+  margin-bottom:20px;
+  left:20px;
+} 
+#profile{
+font-weight:bold;
+font-size:2rem;
+color:white;
+}
+#new_article{
+  margin-bottom: 30px;
+  font-size:2rem;
+  font-weight: bold;
+}
+#top_navbar{
+ background-color:black;
+  height: 50px;
+}
+#subnav{
+  margin-top:-20px;
+background-color:#788290;
+}
+.navbar_links{
+  color:white;
+}
+#indexbtn{
+  margin-bottom: 20px;
+}
+#truncated_text{
+margin-bottom:20px;
+font-size:1.4rem;
+}
+    #links a{
+color:white;
+font-size:25px;
+    }

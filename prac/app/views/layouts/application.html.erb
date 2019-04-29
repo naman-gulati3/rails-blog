@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Prac</title>
+
+  <title>Loconav Blogs</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
+<nav id="top_navbar" class="navbar navbar-inverse" role="navigation">
+   <div class="navbar-header">
+      <%=link_to '<h4 style="color:white;font-size:3rem" class="navbar-brand">Loconav</h4>'.html_safe  %>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li class="active"><%= link_to '<h4 class="navbar_links">About Us</h4>'.html_safe%></li>
+         <li><%= link_to '<h4 class="navbar_links">Blog</h4>'.html_safe ,articles_path , class:"subnav-trigger" %></li>
+      </ul>
+   </div>
 
-<%= yield %>
+</nav>
 
+<nav id="subnav" class="navbar navbar-default" role="navigation">
+      <ul class="nav navbar-nav">
+      </ul>
+        <ul id="profile" class="nav navbar-nav navbar-right">
+  <li class="dropdown">
+    <a style="color:black;margin-right:40px;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <% if user_signed_in? %>
+        <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+      <% else %>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li><%=link_to 'Login' , new_user_session_path%></li>
+        <li><%= link_to "Login with Github", '/auth/github' %></li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li role="separator" class="divider"></li>
+        <% if current_user.provider.present? %>
+        <li><%= link_to "Logout", signout_path, method: :delete %></li>
+        <%else%>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <%end%>
+      <% end %>
+  </ul>
+</nav>
+
+    <div class="container">
+    <%= yield %>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
 </body>
+
 </html>

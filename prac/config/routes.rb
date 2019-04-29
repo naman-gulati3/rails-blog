@@ -1,12 +1,23 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  get 'articles/index'
+  get 'articles/index'  
   # You can have the root of your site routed with "root"
-   root 'articles#index'
    resources :articles do 
     resources :comments
-  end
+      end
+resources :favorite_articles, only: [:create, :destroy]
+# Routes for Google authentication
+  get "/auth/:provider/callback", to: "githubsessions#create"
+  get 'auth/failure', to: redirect('/')
+  delete 'signout', to: 'githubsessions#destroy', as: 'signout'
+  root to: 'articles#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

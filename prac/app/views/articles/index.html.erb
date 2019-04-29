@@ -1,19 +1,52 @@
-<h1>Listing articles</h1>
- <%= link_to 'New Article', new_article_path %>
-<table>
-  <tr>
-    <th>Title</th>
-    <th style="margin-left:300">Text</th>
-    <th colspan="3"></th>
-  </tr>
- 
-  <% @article.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td style="margin-left: 300"><%= article.text %></td>
-      <td><%= link_to 'Show' , article_path(article) %></td>
-		<td><%= link_to 'Edit' , edit_article_path(article) %></td>
-		<td><%= link_to 'Destroy' ,article_path(article), method: :delete, data: {confirm: 'are you sure?'} %> </td>
-    </tr>
-  <% end %>
-</table>
+    <%= tinymce_assets %>
+<div id="user-widget">
+  <% if user_signed_in? %>
+  <p>
+    Welcome, <%= current_user.username %>
+  </p>
+<%end%>
+</div>
+
+    <% if user_signed_in? %>
+     <% Favorite.where(user_id: current_user.id).each do |favorite| %>
+  <% @article.where(id:favorite.favorited_id).each do |fav_art| %>
+  <div style="position:relative;left:1000px">
+
+   <ul>
+    <li>
+        <%= link_to fav_art.title, article_path(fav_art) %>
+      </li>
+   </ul>
+ </div> 
+   <%end%>
+   <%end%>
+   <%end%>
+  <h1 id="article_heading">Listing articles</h1>
+    <div id="new_article"><%= link_to 'New Article', new_article_path %></div>
+      <% @article.each do |article| %>
+        <div class="index_heading" ><%= link_to article.title , article_path(article)%> </div>
+        <div id="index_value" >Author: <%= article.user.try(:username) %></div>
+        <table>
+          <div id="truncated_text"> <% if article.text.length > 150 %>
+            <%= truncate_html(article.text, length: 150) %>
+            <%= link_to '...Read more', article_path(article)%>
+            <script>
+              $('.read-more-<%= article.id %>').on('click', function(e) {
+              e.preventDefault()
+              $(this).parent().html('<%= escape_javascript article.text %>')
+              })
+            </script>
+      <% else %>
+        <%= article.text.html_safe %>
+  <% end %></div>
+  
+        <th><%= link_to '<button id="indexbtn" class="btn btn-info">Show</button>'.html_safe , article_path(article) %></th>
+        <% if user_signed_in? && article.user_id == current_user.id %>
+   
+    <th><%= link_to '<button id="indexbtn" class="btn btn-warning">Edit</button>'.html_safe ,edit_article_path(article)%></th>
+		      <th><%= link_to '<button id="indexbtn" class="btn btn-danger">Delete</button>'.html_safe ,article_path(article), method: :delete, data: {confirm: 'are you sure?'}%></th>
+        <%end%>
+        </table>
+        <hr> </hr>
+      <%end%>
+  

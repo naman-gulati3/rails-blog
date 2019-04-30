@@ -75,10 +75,10 @@ h4{
 margin-bottom: 10px;
 width:85%;
 }
-.comment_delete{
+#comment_delete{
   position: relative;
   left:1000px;
-  top:-50px;
+  top:-70px;
 
 }
 #author{

@@ -75,10 +75,11 @@ h4{
 margin-bottom: 10px;
 width:85%;
 }
-#comment_delete{
+.comment_delete{
   position: relative;
   left:1000px;
-  top:-55px;
+  top:-50px;
+
 }
 #author{
   font-size:1.6rem;
@@ -103,6 +104,7 @@ color:white;
   margin-bottom: 30px;
   font-size:2rem;
   font-weight: bold;
+  margin-top:30px;
 }
 #top_navbar{
  background-color:black;
@@ -130,3 +132,8 @@ font-size:25px;
       font-size:2rem;
       margin-top:50px;
     }
+.search_box{
+  position: relative;
+left:1000px;
+top:-80px;
+}

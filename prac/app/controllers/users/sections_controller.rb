@@ -14,7 +14,7 @@ class SectionsController < ApplicationController
     redirect_to article_path(@article)
   end
   private
-  def sections_params
+  def section_params
     params.require(:comment).permit(:body)
   end 
 	end

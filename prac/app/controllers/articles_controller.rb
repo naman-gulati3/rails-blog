@@ -1,12 +1,12 @@
 class ArticlesController < ApplicationController
   
   def index 
-    @article = Article.all
+     @article = Article.search(params[:search])
   end
   def show
 
     @article = Article.find(params[:id])
-
+    authorize! :read, @article
   end
   def new
     @article = Article.new
@@ -20,6 +20,11 @@ class ArticlesController < ApplicationController
       render :new
     end
 end 
+       def search
+          @article = Article.search(params[:search].split("=").last)
+          respond_to :js
+      end
+
   def edit
     @article = Article.find(params[:id])
     if @article.user_id != current_user.id

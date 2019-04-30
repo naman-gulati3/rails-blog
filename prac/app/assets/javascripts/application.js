@@ -14,5 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require tinymce
-
+$(function() {
+  $("#articles #index_value a").click(function() {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#articles_search input").keyup(function() {
+    $.get($("#articles_search").attr("action"), $("#articles_search").serialize(), null, "script");
+    return false;
+  });
+});

@@ -1,0 +1,6 @@
+<% @article.sections.each do |s| %>
+    <p><%= s.body.html_safe %></p>
+    <% if user_signed_in? && @article.user_id == current_user.id %>
+      <p id="section_delete">  <%= link_to '<strong>Delete</strong>'.html_safe , [s.article,s],method: :delete, data: {confirm: 'are you sure?' }%>  </p>
+      <% end %>
+    <% end %>

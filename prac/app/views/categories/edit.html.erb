@@ -1,0 +1,12 @@
+<% Article.where(category_id: @category.id).each do |article| %>
+<% if user_signed_in? && current_user.id == article.user_id%>
+<h1> Editing category </h1>
+
+<%= render 'form' %>
+
+<%= link_to '<button class="btn btn-primary">Show</button>'.html_safe, @category %>
+<% else %>
+<h1><%= flash[:notice] = "Cannot Edit this Category" %><h1><br>
+<%end%>
+<%= link_to '<button class="btn btn-primary">Back</button>'.html_safe, categories_path %>
+<% end %>

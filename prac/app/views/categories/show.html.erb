@@ -1,0 +1,5 @@
+<h1>Articles under <%= @category.name %> are : <h1><br>
+<% Article.where(category_id: @category.id).each do |article| %>
+  <h4><li><%= link_to article.title , article_path(article) %></li><h4>
+<% end %>
+  <%= link_to '<button class="btn btn-primary">Back</button>'.html_safe, categories_path %>

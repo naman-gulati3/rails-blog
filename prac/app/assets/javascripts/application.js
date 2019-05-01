@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tinymce
 //= require_tree .
 $(function() {
   $("#articles #index_value a").click(function() {

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   get 'sessions/create'
 
   get 'sessions/destroy'
@@ -15,7 +16,8 @@ Rails.application.routes.draw do
     resources :comments
     resources :sections
       end
-resources :favorite_articles, only: [:create, :destroy]
+
+resources :favorites, only: [:create, :destroy]
 # Routes for Google authentication
   get "/auth/:provider/callback", to: "githubsessions#create"
   get 'auth/failure', to: redirect('/')

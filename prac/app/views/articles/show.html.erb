@@ -1,8 +1,14 @@
-
+<% @category = Category.where(id: @article.category_id) %>
 <div id="everything">
   <h1 id="article_heading"><%= @article.title %></h1>
-  <div id="author">By <%=@article.user.username%> on <%= @article.created_at.strftime("%d-%m-%Y") %></div>
+  <div id="author">By <%=@article.user.username%> on <%= @article.created_at.strftime("%d-%m-%Y")%> 
+    <% if @article.category_id != nil %> 
+    , Category: <%= link_to @category.first.name, category_path(@category.first.id) %>
+    <% end %>
+  </div>
+
   <%= @article.text.html_safe %>
+  <%= render 'sections' %>
 <%=render 'comments' %>
 <%if user_signed_in? %>
     <div id="comment_plus_button">
@@ -27,9 +33,9 @@
             <%end%>
             <%= link_to '<button class="btn btn-primary">All</button>'.html_safe , articles_path %></p>
             <%- unless current_user.favorite_articles.exists?(id: @article.id) -%>
-              <%= link_to '<button class="btn btn-success">Add to Favorite</button>'.html_safe, favorite_articles_path(article_id: @article), method: :post %>
+              <%= link_to '<button class="btn btn-success">Add to Favorite</button>'.html_safe, favorites_path(article_id: @article), method: :post %>
             <%-else-%>
-              <%= link_to '<button class="btn btn-danger">Remove from favorite</button>'.html_safe, favorite_article_path(@article), method: :delete %>
+              <%= link_to '<button class="btn btn-danger">Remove from favorite</button>'.html_safe, favorite_path(@article), method: :delete %>
             <%-end-%>
         <%end%>
 <%end%>

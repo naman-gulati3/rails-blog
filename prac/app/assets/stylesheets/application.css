@@ -137,3 +137,11 @@ font-size:25px;
 left:1000px;
 top:-80px;
 }
+#edit_textbox{
+  height:500px;
+}
+#section_delete{
+  position: relative;
+  left: 1000px;
+  top:-20px;
+}

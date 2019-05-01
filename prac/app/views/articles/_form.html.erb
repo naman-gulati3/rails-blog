@@ -1,7 +1,7 @@
+
 <%= form_for @article do |form| %>
   <%  if @article.errors.any? %>
     <div id="error_explanation">
-    <h2>
     <%= pluralize(@article.errors.count," error") %>
     probhited this article from being saved
     <ul>
@@ -10,12 +10,17 @@
     <%end%>
     </ul>
     </div>
-  <%end%>
+  <%end%> 
+    <%= form.label :category %><br>
+  <%= select_tag(:category_id, options_for_select(@categories),:prompt => "Select one!" )%>
+    or <%= link_to 'Add new Category' , new_category_path %><br>
+    <hr></hr>
     <%= form.label :title%><br>
-    <%= form.text_field :title, class:"form-control"%><br>
+    <%= form.text_field :title, class: "form-control"%><br>
     <%= form.label :text  %><br>
-    <%= form.text_area :text,id:"edit_input",class:"tinymce",id: 'edit_textbox' %>
-    <%= form.submit "Create Article" , class: 'btn btn-primary', id:'submit_button'%>
-  
-<%end%>
-<%= tinymce %>
+    <%= form.text_area :text,class: "tinymce", id: 'edit_textbox'%>
+    <%= form.submit "Create Article" , class: 'btn btn-primary', id: 'submit_button'%> 
+<% end %>
+
+
+<%=tinymce %>

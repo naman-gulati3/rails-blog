@@ -6,6 +6,5 @@ class Ability
 can :read, Article
 can :read, Comment
     # Define User abilities
-
   end
 end     

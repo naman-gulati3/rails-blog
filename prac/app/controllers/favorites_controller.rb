@@ -1,4 +1,4 @@
-class FavoriteArticlesController < ApplicationController
+class FavoritesController < ApplicationController
   before_action :set_article
   
   def create
@@ -20,3 +20,4 @@ class FavoriteArticlesController < ApplicationController
     @article = Article.find(params[:article_id] || params[:id])
   end
 end
+

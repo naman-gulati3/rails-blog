@@ -1,0 +1,21 @@
+h1 Listing categories
+
+table
+  thead
+    tr
+      th <h4>Name</h4>
+      th
+      th
+      th
+
+  tbody
+    - @categories.each do |category|
+      tr
+        td = category.name
+        td = link_to '<button class="btn btn-primary">Show</button>'.html_safe, category
+        td = link_to '<button class="btn btn-warning">Edit</button>'.html_safe, edit_category_path(category)
+        td = link_to '<button class="btn btn-danger">Delete</button>'.html_safe, category, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to '<button class="btn btn-primary">New Category</button>'.html_safe, new_category_path

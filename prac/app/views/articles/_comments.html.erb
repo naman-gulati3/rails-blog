@@ -11,7 +11,7 @@
     <div id="each_comment"><%= c.body %></div>
     <hr></hr>
     <%if user_signed_in? && c.user_id == current_user.id || user_signed_in? && @article.user_id == current_user.id %>
-      <p id="comment_delete"><%= link_to '<strong>Delete</strong>'.html_safe , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%></p>
-    <%end%>
-    <%end%>
- 
+      <p id="comment_delete">  <%= link_to '<strong>Delete</strong>'.html_safe , [c.article,c],method: :delete, data: {confirm: 'are you sure?' }%>  </p>
+
+    <% end %>
+    <% end %>

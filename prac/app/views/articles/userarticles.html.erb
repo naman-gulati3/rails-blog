@@ -1,0 +1,6 @@
+<h4> <%= current_user.username%>'s Articles</h4>
+<ul>
+<% @article.where(user_id:current_user.id).each do |a| %>
+<li class="user_articles"><%=link_to a.title, article_path(a)%></li> 
+<%end%>
+</ul>

@@ -3,7 +3,7 @@
 <head>
 
   <title>Loconav Blogs</title>
-  
+  <%= javascript_include_tag :defaults, "nested_form" %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -34,6 +34,7 @@
     <ul class="dropdown-menu">
       <% if user_signed_in? %>
         <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+
       <% else %>
         <li><%= link_to "Sign up", new_user_registration_path %></li>
         <li><%=link_to 'Login' , new_user_session_path%></li>
@@ -49,7 +50,6 @@
       <% end %>
   </ul>
 </nav>
-
     <div class="container">
     <%= yield %>
     </div>

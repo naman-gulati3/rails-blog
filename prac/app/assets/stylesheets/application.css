@@ -71,10 +71,6 @@ h4{
 .commenter{
   font-size:1.6rem;
 }
-#each_comment{
-margin-bottom: 10px;
-width:85%;
-}
 #comment_delete{
   position: relative;
   left:1000px;
@@ -101,10 +97,13 @@ font-size:2rem;
 color:white;
 }
 #new_article{
+  position: relative;
   margin-bottom: 30px;
   font-size:2rem;
   font-weight: bold;
   margin-top:30px;
+  left:150px;
+  top:-50px;
 }
 #top_navbar{
  background-color:black;
@@ -144,4 +143,16 @@ top:-80px;
   position: relative;
   left: 1000px;
   top:-20px;
+}
+#submit_button{
+  position: relative;
+  top:25px;
+  margin-bottom: 40px;
+}
+.section_body{
+  margin-bottom: 20px;
+}
+#articles{
+  position: relative;
+  top:-50px;
 }

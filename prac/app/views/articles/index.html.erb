@@ -1,4 +1,3 @@
-    <%= tinymce_assets %>
 <div id="user-widget">
   <% if user_signed_in? %>
   <p>
@@ -7,24 +6,28 @@
 <%end%>
 <div id="new_article"><%= link_to "<button class='btn btn-primary'>New Article</button>".html_safe, new_article_path %></div>
 </div>
+
+<% if user_signed_in? %>
+  <strong style="position:relative;left:1000px">Your Favorites: </strong>
+  <% Favorite.where(user_id: current_user.id).each do |favorite| %>
+    <% @article.where(id:favorite.favorited_id).each do |fav_art| %>
+      <div style="position:relative;left:1000px">
+        <ul>
+          <li>
+            <%= link_to fav_art.title, article_path(fav_art) %>
+          </li>
+        </ul>
+      </div>
+    <%end%>
+  <%end%>
+<%end%>
+
 <%= form_tag root_path, :method => 'get', :id => "articles_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] , class: "search_box" , placeholder: "search for article"%>
     </p> 
   <div id="articles"><%= render 'articles' %></div>
-<% end %>
-    <% if user_signed_in? %>
-     <% Favorite.where(user_id: current_user.id).each do |favorite| %>
-  <% @article.where(id:favorite.favorited_id).each do |fav_art| %>
-  <div style="position:relative;left:1000px">
+<% end %> 
+    
 
-   <ul>
-    <li>
-        <%= link_to fav_art.title, article_path(fav_art) %>
-      </li>
-   </ul>
- </div> 
-   <%end%>
-   <%end%>
-   <%end%>
     

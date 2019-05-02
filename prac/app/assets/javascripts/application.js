@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require tinymce
+//= require jquery_nested_form
 //= require_tree .
+
+
 $(function() {
   $("#articles #index_value a").click(function() {
     $.getScript(this.href);

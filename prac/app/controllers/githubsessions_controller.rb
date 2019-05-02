@@ -1,4 +1,5 @@
 class GithubsessionsController < ApplicationController
+  
   def new
   end
 

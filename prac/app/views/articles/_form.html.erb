@@ -1,5 +1,5 @@
-
-<%= form_for @article do |form| %>
+<%=tinymce %>
+<%= nested_form_for @article do |form| %>
   <%  if @article.errors.any? %>
     <div id="error_explanation">
     <%= pluralize(@article.errors.count," error") %>
@@ -19,8 +19,13 @@
     <%= form.text_field :title, class: "form-control"%><br>
     <%= form.label :text  %><br>
     <%= form.text_area :text,class: "tinymce", id: 'edit_textbox'%>
-    <%= form.submit "Create Article" , class: 'btn btn-primary', id: 'submit_button'%> 
+    <%=form.fields_for :sections do |section_form|%>
+    <%=section_form.text_area :body, class: "tinymce" %>
+    <%= section_form.link_to_remove "Remove this Section" %>
+    <% end %>
+    <p><%= form.link_to_add "Add a Section", :sections %></p>
+
+    <%= form.submit "Create Article" , class: "btn btn-primary", id: "submit_button"%> 
 <% end %>
 
 
-<%=tinymce %>

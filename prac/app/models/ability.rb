@@ -3,8 +3,7 @@ class Ability
   def initialize( user )
 
     user ||= User.new
-can :read, Article
-can :read, Comment
+can :manage, :all
     # Define User abilities
   end
 end     

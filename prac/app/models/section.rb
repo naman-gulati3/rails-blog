@@ -1,5 +1,4 @@
-  class Section < ActiveRecord::Base
+class Section < ActiveRecord::Base
   belongs_to :article
-    belongs_to :user
-    validates :body , presence: true
+  validates :body , presence: true
 end

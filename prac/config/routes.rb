@@ -2,14 +2,18 @@ Rails.application.routes.draw do
   get 'sessions/create'
 
   get 'sessions/destroy'
-
+  get 'article/search'
   devise_for :users
+  resource :articles do 
+    get "userarticles"
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'articles/index'  
   # You can have the root of your site routed with "root"
    resources :articles do 
     resources :comments
+    resources :sections
       end
 resources :favorite_articles, only: [:create, :destroy]
 # Routes for Google authentication

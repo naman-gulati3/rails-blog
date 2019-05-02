@@ -17,8 +17,9 @@
    </div>
    <div>
       <ul class="nav navbar-nav">
-         <li class="active"><%= link_to '<h4 class="navbar_links">About Us</h4>'.html_safe%></li>
-         <li><%= link_to '<h4 class="navbar_links">Blog</h4>'.html_safe ,articles_path , class:"subnav-trigger" %></li>
+         
+         <li><%= link_to '<h4 class="navbar_links">Blog</h4>'.html_safe ,root_path , class:"subnav-trigger" %></li>
+         <li><%= link_to '<h4 class="navbar_links">My Blogs</h4>'.html_safe, userarticles_articles_path %></li>
       </ul>
    </div>
 
